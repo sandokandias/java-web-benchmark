@@ -8,9 +8,10 @@ import static spark.Spark.post;
 
 public class SparkServer {
 
+    private static ObjectMapper mapper = new ObjectMapper();
+
     public static void main(String[] args) {
         post("/", (request, response) -> {
-            ObjectMapper mapper = new ObjectMapper();
             Transaction transaction = mapper.readValue(request.body(), Transaction.class);
             transaction.setId(UUID.randomUUID().toString());
             return mapper.writeValueAsString(transaction);
