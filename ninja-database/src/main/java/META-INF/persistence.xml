@@ -18,8 +18,8 @@
             <property name="hibernate.hikari.maximumPoolSize" value="50"/>
             <property name="hibernate.hikari.idleTimeout" value="30000"/>
             <property name="hibernate.hikari.dataSource.url" value="jdbc:mysql://localhost:3306/labs-java"/>
-            <property name="hibernate.hikari.dataSource.user" value="root"/>
-            <property name="hibernate.hikari.dataSource.password" value="root"/>
+            <property name="hibernate.hikari.dataSource.user" value="labs-java"/>
+            <property name="hibernate.hikari.dataSource.password" value="labs-java"/>
 
         </properties>
     </persistence-unit>

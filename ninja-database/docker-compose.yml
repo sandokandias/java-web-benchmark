@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+   db:
+     image: mysql:5.7
+     ports:
+         - "3306:3306"
+     volumes:
+       - db_data:/var/lib/mysql
+     restart: always
+     environment:
+       MYSQL_ROOT_PASSWORD: labs-java
+       MYSQL_DATABASE: labs-java
+       MYSQL_USER: labs-java
+       MYSQL_PASSWORD: labs-java
+volumes:
+    db_data:
