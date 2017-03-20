@@ -25,9 +25,10 @@ public class Routes implements ApplicationRoutes {
         ///////////////////////////////////////////////////////////////////////
         // Index / Catchall shows index page
         ///////////////////////////////////////////////////////////////////////
-        router.GET().route("/.*").with(ApplicationController::index);
+        //router.GET().route("/.*").with(ApplicationController::index);
 
         router.POST().route("/").with(ApplicationController::create);
+        router.GET().route("/{id}").with(ApplicationController::getTransaction);
     }
 
 }

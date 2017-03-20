@@ -17,6 +17,7 @@
 package controllers;
 
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import ninja.NinjaDocTester;
@@ -31,7 +32,7 @@ public class ApiControllerDocTesterTest extends NinjaDocTester {
     String URL_INDEX = "/";
     String URL_HELLO_WORLD_JSON = "/hello_world.json";
     
-    @Test
+    @Ignore
     public void testGetIndex() {
     
         Response response = makeRequest(
@@ -44,7 +45,7 @@ public class ApiControllerDocTesterTest extends NinjaDocTester {
 
     }
     
-    @Test
+    @Ignore
     public void testGetHelloWorldJson() {
     
         Response response = makeRequest(
