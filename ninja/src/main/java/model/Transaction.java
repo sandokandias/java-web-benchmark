@@ -15,7 +15,6 @@ public class Transaction {
     private String id;
     private BigDecimal amount;
     private String description;
-    @Column
     @ElementCollection(targetClass = TransactionItem.class)
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<TransactionItem> items;

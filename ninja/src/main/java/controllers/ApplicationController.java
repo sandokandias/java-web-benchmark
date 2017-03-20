@@ -68,7 +68,6 @@ public class ApplicationController {
 
     }
 
-
     @Transactional
     public Result create(Transaction transaction) {
         String id = UUID.randomUUID().toString();
@@ -82,8 +81,7 @@ public class ApplicationController {
 
     @UnitOfWork
     public Result getTransaction(@PathParam("id") String id) {
-        Query query = entitiyManagerProvider.get().createQuery("SELECT t FROM Transaction t WHERE id = :id");
-        query.setParameter("id", id);
+        Query query = entitiyManagerProvider.get().createQuery("SELECT t FROM Transaction t WHERE id = :id").setParameter("id", id);
         List<Transaction> transactionList = (List<Transaction>) query.getResultList();
         return Results.json().render(transactionList);
     }
