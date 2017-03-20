@@ -1,0 +1,9 @@
+{
+  "http.port" : 8080,
+  "jdbcUrl": "{url prod}",
+  "username": "{user prod}",
+  "password": "{pass prod}",
+  "driverClassName": "com.mysql.cj.jdbc.Driver",
+  "maximumPoolSize": 50,
+  "provider_class": "io.vertx.ext.jdbc.spi.impl.HikariCPDataSourceProvider"
+}

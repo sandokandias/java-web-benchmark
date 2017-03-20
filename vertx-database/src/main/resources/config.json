@@ -1,0 +1,9 @@
+{
+  "http.port" : 8080,
+  "jdbcUrl": "jdbc:mysql://localhost:3306/labs-java?useSSL=false",
+  "username": "labs-java",
+  "password": "labs-java",
+  "driverClassName": "com.mysql.cj.jdbc.Driver",
+  "maximumPoolSize": 50,
+  "provider_class": "io.vertx.ext.jdbc.spi.impl.HikariCPDataSourceProvider"
+}
