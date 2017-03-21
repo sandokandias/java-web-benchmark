@@ -16,10 +16,14 @@
 
 package controllers;
 
+import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import com.google.inject.persist.Transactional;
 import model.Transaction;
+import ninja.Context;
 import ninja.Result;
 import ninja.Results;
+import ninja.Router;
 
 import java.util.UUID;
 
@@ -27,27 +31,13 @@ import java.util.UUID;
 @Singleton
 public class ApplicationController {
 
-    public Result index() {
+    @Inject
+    Router router;
 
-        return Results.html();
+    @Inject
+    Context context;
 
-    }
-
-    public Result helloWorldJson() {
-
-        SimplePojo simplePojo = new SimplePojo();
-        simplePojo.content = "Hello World! Hello Json!";
-
-        return Results.json().render(simplePojo);
-
-    }
-
-    public static class SimplePojo {
-
-        public String content;
-
-    }
-
+    @Transactional
     public Result create(Transaction transaction) {
         transaction.setId(UUID.randomUUID().toString());
         return Results.json().render(transaction);
