@@ -28,7 +28,7 @@ public class ApplicationController {
     @Transactional
     public Result create(Transaction transaction) {
         String id = UUID.randomUUID().toString();
-        transaction.setId(UUID.randomUUID().toString());
+        transaction.setId(id);
         transaction.getItems().stream().forEach(transactionItem -> {
             transactionItem.setTransactionId(id);
         });

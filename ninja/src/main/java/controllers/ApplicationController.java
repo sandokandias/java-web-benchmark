@@ -17,7 +17,6 @@
 package controllers;
 
 import com.google.inject.Inject;
-import com.google.inject.Provider;
 import com.google.inject.Singleton;
 import com.google.inject.persist.Transactional;
 import model.Transaction;
@@ -25,12 +24,7 @@ import ninja.Context;
 import ninja.Result;
 import ninja.Results;
 import ninja.Router;
-import ninja.jpa.UnitOfWork;
-import ninja.params.PathParam;
 
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
-import java.util.List;
 import java.util.UUID;
 
 
@@ -38,51 +32,14 @@ import java.util.UUID;
 public class ApplicationController {
 
     @Inject
-    Provider<EntityManager> entitiyManagerProvider;
-
-    @Inject
     Router router;
 
     @Inject
     Context context;
 
-
-    public Result index() {
-
-        return Results.html();
-
-    }
-
-    public Result helloWorldJson() {
-
-        SimplePojo simplePojo = new SimplePojo();
-        simplePojo.content = "Hello World! Hello Json!";
-
-        return Results.json().render(simplePojo);
-
-    }
-
-    public static class SimplePojo {
-
-        public String content;
-
-    }
-
     @Transactional
     public Result create(Transaction transaction) {
-        String id = UUID.randomUUID().toString();
         transaction.setId(UUID.randomUUID().toString());
-        transaction.getItems().stream().forEach(transactionItem -> {
-            transactionItem.setTransactionId(id);
-        });
-        entitiyManagerProvider.get().persist(transaction);
         return Results.json().render(transaction);
-    }
-
-    @UnitOfWork
-    public Result getTransaction(@PathParam("id") String id) {
-        Query query = entitiyManagerProvider.get().createQuery("SELECT t FROM Transaction t WHERE id = :id").setParameter("id", id);
-        List<Transaction> transactionList = (List<Transaction>) query.getResultList();
-        return Results.json().render(transactionList);
     }
 }
