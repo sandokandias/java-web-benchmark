@@ -23,7 +23,7 @@
          version="3.0"
          metadata-complete="true">
 
-    <display-name>ninja</display-name>
+    <display-name>ninja-database</display-name>
 
 	<listener>
 		<listener-class>ninja.servlet.NinjaServletListener</listener-class>
